@@ -1,3 +1,9 @@
+/*
+* David Huerta
+* 3D Prototype
+* Handles shooting by sending raycasts forward from the camera.
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,7 +26,6 @@ public class ShootWithRaycasts : MonoBehaviour
 
     void Shoot()
     {
-        // At the beginning of the Shoot() method, play the particle effect
         if (muzzleFlash != null)
         {
             muzzleFlash.Play();
@@ -31,18 +36,14 @@ public class ShootWithRaycasts : MonoBehaviour
         {
             Debug.Log(hitInfo.transform.gameObject.name);
 
-            // Get the Target script off the hit object
             Target target = hitInfo.transform.gameObject.GetComponent<Target>();
-            // If a target script was found, make the target take damage
             if (target != null)
             {
                 target.TakeDamage(damage);
             }
 
-            // If the shot hits a Rigidbody, apply a force
             if (hitInfo.rigidbody != null)
             {
-                // Use the camera’s forward direction (so force pushes in view direction)
                 hitInfo.rigidbody.AddForce(cam.transform.forward * hitForce, ForceMode.Impulse);
             }
         }

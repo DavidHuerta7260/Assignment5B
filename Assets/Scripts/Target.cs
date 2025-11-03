@@ -1,3 +1,9 @@
+/*
+* David Huerta
+* 3D Prototype
+* Handles target health and destruction when taking damage.
+*/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
